@@ -1,0 +1,38 @@
+; Sneak Vignette 1.6 - Stentorious
+
+; On Game Restart
+if Goo1.AuxVarGetFlt "*SneakVig_Init" != 1
+	Goo1.AuxVarSetFlt "*SneakVig_Init" 1
+
+	; Check for requirements
+	if GetPluginVersion "UI Organizer Plugin" < 230
+		MessageBoxEx "Sneak Vignette missing requirement!%rInstall latest User Interface Organizer plugin."
+		return
+	endif
+
+	; Load INI settings
+	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fHiddenAlpha" "SneakVignette.ini"))) * 255) 0
+	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fCautionAlpha" "SneakVignette.ini"))) * 255) 1
+	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fDetectedAlpha" "SneakVignette.ini"))) * 255) 2
+	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fDangerAlpha" "SneakVignette.ini"))) * 255) 3
+
+	; Vignette game loop
+	SetGameMainLoopCallback (begin Function {}
+		float fSneakAlpha = 0
+		if eval Player.IsSneaking
+			fSneakAlpha = Goo1.AuxVarGetFlt "*SnkVg" (GetPCDetectionState)
+		endif
+		if Goo1.AuxVarGetFlt "*SnkVg" 4 != fSneakAlpha
+			SetUIFloatGradual "HudMainMenu\_stSV+A" (GetUIFloatAlt "HudMainMenu\_stSV+A") fSneakAlpha 0.2
+			Goo1.AuxVarSetFlt "*SnkVg" fSneakAlpha 4
+		endif
+	end) 1 5 1
+
+endif
+
+; Update vignette on game load
+Goo1.AuxVarSetFlt "*SnkVg" 0 4
+if eval Player.IsSneaking
+	Goo1.AuxVarSetFlt "*SnkVg" (Goo1.AuxVarGetFlt "*SnkVg" (GetPCDetectionState)) 4
+endif
+SetUIFloatAlt "HudMainMenu\_stSV+A" (Goo1.AuxVarGetFlt "*SnkVg" 4)

@@ -1,0 +1,20 @@
+<_stSV+A>0</_stSV+A>
+
+<image name="SneakVignette">
+	<visible> 1 </visible>
+	<alpha> <copy src="io()" trait="_stSV+A" /> </alpha>
+	<depth> -2 </depth>
+	<x> -10 </x>
+	<y> -10 </y>
+	<width>
+		<copy src="screen()" trait="width" />
+		<add> 20 </add>
+	</width>
+	<height>
+		<copy src="screen()" trait="height" />
+		<add> 20 </add>
+	</height>
+	<zoom> &scale; </zoom>
+	<systemcolor> 0 </systemcolor>
+	<filename> Interface\Stentorious\vignette.dds </filename>
+</image>
