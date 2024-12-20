@@ -1,8 +1,6 @@
-<_stSV+A>0</_stSV+A>
-
 <image name="SneakVignette">
 	<visible> 1 </visible>
-	<alpha> <copy src="io()" trait="_stSV+A" /> </alpha>
+	<alpha> 0 </alpha>
 	<depth> -2 </depth>
 	<x> -10 </x>
 	<y> -10 </y>
