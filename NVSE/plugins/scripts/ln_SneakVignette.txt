@@ -11,10 +11,10 @@ if Goo1.AuxVarGetFlt "*SneakVig_Init" != 1
 	endif
 
 	; Load INI settings
-	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fHiddenAlpha" "SneakVignette.ini"))) * 255) 0
-	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fCautionAlpha" "SneakVignette.ini"))) * 255) 1
-	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fDetectedAlpha" "SneakVignette.ini"))) * 255) 2
-	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fDangerAlpha" "SneakVignette.ini"))) * 255) 3
+	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fHiddenAlpha" "Stentorious\SneakVignette.ini"))) * 255) 0
+	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fCautionAlpha" "Stentorious\SneakVignette.ini"))) * 255) 1
+	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fDetectedAlpha" "Stentorious\SneakVignette.ini"))) * 255) 2
+	Goo1.AuxVarSetFlt "*SnkVg" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fDangerAlpha" "Stentorious\SneakVignette.ini"))) * 255) 3
 
 	; Vignette game loop
 	SetGameMainLoopCallback (begin Function {}
