@@ -14,5 +14,8 @@
 	</height>
 	<zoom> &scale; </zoom>
 	<systemcolor> 0 </systemcolor>
-	<filename> Interface\Stentorious\vignette.dds </filename>
+	<red> 0 </red>
+	<green> 0 </green>
+	<blue> 0 </blue>
+	<filename> Interface\Stentorious\_Common\Overlay\vignette.dds </filename>
 </image>
