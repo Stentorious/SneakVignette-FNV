@@ -13,9 +13,43 @@
 		<add> 20 </add>
 	</height>
 	<zoom> &scale; </zoom>
-	<systemcolor> 0 </systemcolor>
-	<red> 0 </red>
-	<green> 0 </green>
-	<blue> 0 </blue>
+	<systemcolor>
+		<copy src="me()" trait="_combat_state"/>
+		<copy src="me()" trait="_systemcolor_"/>
+	</systemcolor>
+	<red>
+		<copy src="me()" trait="_combat_state"/>
+		<copy src="me()" trait="_red_"/>
+	</red>
+	<green>
+		<copy src="me()" trait="_combat_state"/>
+		<copy src="me()" trait="_green_"/>
+	</green>
+	<blue>
+		<copy src="me()" trait="_combat_state"/>
+		<copy src="me()" trait="_blue_"/>
+	</blue>
 	<filename> Interface\Stentorious\_Common\Overlay\vignette.dds </filename>
+
+	<!-- Player detection state -->
+	<_detection_state> 1 </_detection_state>
+	<_combat_state>
+		<copy src="me()" trait="_detection_state"/>
+		<eq> 1 </eq>
+		<or>
+			<copy src="me()" trait="_detection_state"/>
+			<eq> 3 </eq>
+		</or>
+	</_combat_state>
+
+	<!-- Color control -->
+	<_systemcolor_0> 0 </_systemcolor_0>
+	<_red_0> 0 </_red_0>
+	<_green_0> 0 </_green_0>
+	<_blue_0> 0 </_blue_0>
+	<_systemcolor_1> 0 </_systemcolor_1>
+	<_red_1> 0 </_red_1>
+	<_green_1> 0 </_green_1>
+	<_blue_1> 0 </_blue_1>
+
 </image>
