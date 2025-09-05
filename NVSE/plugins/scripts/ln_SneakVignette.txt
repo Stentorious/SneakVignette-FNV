@@ -11,56 +11,54 @@ if Goo1.AuxVarGetFlt "*SneakVig_Init" != 1
 	endif
 
 	; Load INI settings
-	Goo1.AuxVarSetFlt "*SneakVig" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fHiddenAlpha" "Stentorious\SneakVignette.ini"))) * 255) 0
-	Goo1.AuxVarSetFlt "*SneakVig" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fCautionAlpha" "Stentorious\SneakVignette.ini"))) * 255) 1
-	Goo1.AuxVarSetFlt "*SneakVig" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fDetectedAlpha" "Stentorious\SneakVignette.ini"))) * 255) 2
-	Goo1.AuxVarSetFlt "*SneakVig" ((GetMaxOf 0 (GetMinOf 1 (GetINIFloat "General:fDangerAlpha" "Stentorious\SneakVignette.ini"))) * 255) 3
+	Goo1.AuxVarSetFlt "*_SneakVig" (Clamp (GetINIFloat_Cached "General:fHiddenAlpha" "Stentorious\SneakVignette.ini" 0.8) 0 1) 0
+	Goo1.AuxVarSetFlt "*_SneakVig" (Clamp (GetINIFloat_Cached "General:fCautionAlpha" "Stentorious\SneakVignette.ini" 0.8) 0 1) 1
+	Goo1.AuxVarSetFlt "*_SneakVig" (Clamp (GetINIFloat_Cached "General:fDetectedAlpha" "Stentorious\SneakVignette.ini" 0.8) 0 1) 2
+	Goo1.AuxVarSetFlt "*_SneakVig" (Clamp (GetINIFloat_Cached "General:fDangerAlpha" "Stentorious\SneakVignette.ini" 0.8) 0 1) 3
 
 	; Set vignette color
-	string_var sINI = GetINIString "Color:sDefault" "Stentorious\SneakVignette.ini"
-	int iLength = Sv_Length sINI
-	if eval iLength == 6 && TestExpr (ToNumber sINI 1 1)
-		SetUIFloatAlt "HUDMainMenu\SneakVignette\_red_0" (ToNumber (sINI[0:1]) 1)
-		SetUIFloatAlt "HUDMainMenu\SneakVignette\_green_0" (ToNumber (sINI[2:3]) 1)
-		SetUIFloatAlt "HUDMainMenu\SneakVignette\_blue_0" (ToNumber (sINI[4:5]) 1)
-	elseif eval iLength == 1 && TestExpr (ToNumber sINI 0 1)
-		SetUIFloatAlt "HUDMainMenu\SneakVignette\_systemcolor_0" (ToNumber sINI)
-	endif
-	sINI = GetINIString "Color:sCombat" "Stentorious\SneakVignette.ini"
-	iLength = Sv_Length sINI
-	if eval iLength == 6 && TestExpr (ToNumber sINI 1 1)
-		SetUIFloatAlt "HUDMainMenu\SneakVignette\_red_1" (ToNumber (sINI[0:1]) 1)
-		SetUIFloatAlt "HUDMainMenu\SneakVignette\_green_1" (ToNumber (sINI[2:3]) 1)
-		SetUIFloatAlt "HUDMainMenu\SneakVignette\_blue_1" (ToNumber (sINI[4:5]) 1)
-	elseif eval iLength == 1 && TestExpr (ToNumber sINI 0 1)
-		SetUIFloatAlt "HUDMainMenu\SneakVignette\_systemcolor_1" (ToNumber sINI)
-	endif
-	Sv_Destruct sINI
+	SetUIFloatAlt "HUDMainMenu\SneakVignette\_systemcolor_0" (Clamp (GetINIFloat_Cached "Color:iDefaultSystemcolor" "Stentorious\SneakVignette.ini" 0) 0 5)
+	SetUIFloatAlt "HUDMainMenu\SneakVignette\_red_0" (Clamp (GetINIFloat_Cached "Color:iDefaultRed" "Stentorious\SneakVignette.ini" 0) 0 255)
+	SetUIFloatAlt "HUDMainMenu\SneakVignette\_green_0" (Clamp (GetINIFloat_Cached "Color:iDefaultGreen" "Stentorious\SneakVignette.ini" 0) 0 255)
+	SetUIFloatAlt "HUDMainMenu\SneakVignette\_blue_0" (Clamp (GetINIFloat_Cached "Color:iDefaultBlue" "Stentorious\SneakVignette.ini" 0) 0 255)
+	SetUIFloatAlt "HUDMainMenu\SneakVignette\_systemcolor_1" (Clamp (GetINIFloat_Cached "Color:iCombatSystemcolor" "Stentorious\SneakVignette.ini" 0) 0 5)
+	SetUIFloatAlt "HUDMainMenu\SneakVignette\_red_1" (Clamp (GetINIFloat_Cached "Color:iCombatRed" "Stentorious\SneakVignette.ini" 0) 0 255)
+	SetUIFloatAlt "HUDMainMenu\SneakVignette\_green_1" (Clamp (GetINIFloat_Cached "Color:iCombatGreen" "Stentorious\SneakVignette.ini" 0) 0 255)
+	SetUIFloatAlt "HUDMainMenu\SneakVignette\_blue_1" (Clamp (GetINIFloat_Cached "Color:iCombatBlue" "Stentorious\SneakVignette.ini" 0) 0 255)
 
 	; Force update detection state trait assignment
 	SetUIFloatAlt "HudMainMenu\SneakVignette\_detection_state" 0
 
 	; Vignette game loop
 	SetGameMainLoopCallback (begin Function {}
-		float fSneakAlpha = 0
+		float fAlpha = 0
 		if eval Player.IsSneaking
-			int iState = GetPCDetectionState
-			SetUIFloatAlt "HudMainMenu\SneakVignette\_detection_state" iState
-			fSneakAlpha = Goo1.AuxVarGetFlt "*SneakVig" iState
+			SetUIFloatAlt "HudMainMenu\SneakVignette\_detection_state" (int iState = GetPCDetectionState)
+			fAlpha = (Goo1.AuxVarGetFlt "*_SneakVig" iState) * 255
 		endif
-		if Goo1.AuxVarGetFlt "*SneakVig" 4 != fSneakAlpha
-			SetUIFloatGradual "HudMainMenu\SneakVignette\alpha" (GetUIFloatAlt "HudMainMenu\SneakVignette\alpha") fSneakAlpha 0.2
-			Goo1.AuxVarSetFlt "*SneakVig" fSneakAlpha 4
+		if Goo1.AuxVarGetFlt "*_SneakVig" 4 != fAlpha
+			SetUIFloatGradual "HudMainMenu\SneakVignette\alpha" (GetUIFloatAlt "HudMainMenu\SneakVignette\alpha") fAlpha 0.2
+			Goo1.AuxVarSetFlt "*_SneakVig" fAlpha 4
 		endif
 	end) 1 5 1
+
+	CloseFileSO "Stentorious\SneakVignette.ini" 0
+
+	SetEventHandler "MCMExtUpdate" (begin Function {array_var aTemp}
+		if eval (Ar_Find "SneakVignette" aTemp) != Ar_BadNumericIndex
+			SetUIFloatAlt "HudMainMenu\SneakVignette\_detection_state" 1
+			SetUIFloatAlt "HudMainMenu\SneakVignette\_detection_state" 0
+		endif
+		aTemp = ar_Null
+	end)
 
 endif
 
 ; Update vignette on game load
-Goo1.AuxVarSetFlt "*SneakVig" 0 4
+Goo1.AuxVarSetFlt "*_SneakVig" 0 4
 int iState = GetPCDetectionState
 if eval Player.IsSneaking
-	Goo1.AuxVarSetFlt "*SneakVig" (Goo1.AuxVarGetFlt "*SneakVig" iState) 4
+	Goo1.AuxVarSetFlt "*_SneakVig" ((Goo1.AuxVarGetFlt "*_SneakVig" iState) * 255) 4
 endif
 SetUIFloatAlt "HudMainMenu\SneakVignette\_detection_state" iState
-SetUIFloatAlt "HudMainMenu\SneakVignette\alpha" (Goo1.AuxVarGetFlt "*SneakVig" 4)
+SetUIFloatAlt "HudMainMenu\SneakVignette\alpha" (Goo1.AuxVarGetFlt "*_SneakVig" 4)
