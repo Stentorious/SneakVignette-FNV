@@ -1,6 +1,6 @@
 # Sneak Vignette
 <p align="center">
-    <img height="500px" src="https://staticdelivery.nexusmods.com/mods/130/images/84802/84802-1708196402-429119824.png">
+	<img height="500px" src="https://staticdelivery.nexusmods.com/mods/130/images/84802/84802-1708196402-429119824.png">
 </p>
 
 ## Overview

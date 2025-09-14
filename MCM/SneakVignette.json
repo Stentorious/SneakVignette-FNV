@@ -1,102 +1,102 @@
 {
-    "modName": "SneakVignette",
-    "displayName": "$modDisplayName",
+	"modName": "SneakVignette",
+	"displayName": "$modDisplayName",
 	"description": "$modDescription",
-    "saveFile": "Stentorious/SneakVignette.ini",
-    "minMCMVersion": 1.00,
-    "minModVersion": 1.00,
-    "requirements": [
-        { "type": "file", "file": "NVSE/plugins/scripts/ln_SneakVignette.txt" }
-    ],
-    "submenus": {
-        "0": {
-            "listTitle": "$modDisplayName",
-            "pageTitle": "$modDisplayName",
-            "active": 1,
-            "columns": 2,
-            "enable": 1,
-            "options": {
-                "1": {
-                    "title": "$VignetteMultiplier",
-                    "enable": 1,
-                    "type": 0
+	"saveFile": "Stentorious/SneakVignette.ini",
+	"minMCMVersion": 1.00,
+	"minModVersion": 1.00,
+	"requirements": [
+		{ "type": "file", "file": "NVSE/plugins/scripts/ln_SneakVignette.txt" }
+	],
+	"submenus": {
+		"0": {
+			"listTitle": "$modDisplayName",
+			"pageTitle": "$modDisplayName",
+			"active": 1,
+			"columns": 2,
+			"enable": 1,
+			"options": {
+				"1": {
+					"title": "$VignetteMultiplier",
+					"enable": 1,
+					"type": 0
 				},
-                "3": {
-                    "title": "$Hidden",
-                    "enable": 1,
-                    "type": 2.5,
-                    "mouse": "$MultiplierMouse",
-                    "vars": [{ "form": "Goo1", "auxVar": "*_SneakVig", "key": 0, "configINI": "General:fHiddenAlpha", "default": 0.80 }],
-                    "scale": { "valueDecimal": 2, "valueIncrement": 0.01, "valueMax": 1, "valueMin": 0 }
-                },
-                "5": {
-                    "title": "$Caution",
-                    "enable": 1,
-                    "type": 2.5,
-                    "mouse": "$MultiplierMouse",
-                    "vars": [{ "form": "Goo1", "auxVar": "*_SneakVig", "key": 1, "configINI": "General:fCautionAlpha", "default": 0.80 }],
-                    "scale": { "valueDecimal": 2, "valueIncrement": 0.01, "valueMax": 1, "valueMin": 0 }
-                },
-                "7": {
-                    "title": "$Detected",
-                    "enable": 1,
-                    "type": 2.5,
-                    "mouse": "$MultiplierMouse",
-                    "vars": [{ "form": "Goo1", "auxVar": "*_SneakVig", "key": 2, "configINI": "General:fDetectedAlpha", "default": 0.80 }],
-                    "scale": { "valueDecimal": 2, "valueIncrement": 0.01, "valueMax": 1, "valueMin": 0 }
-                },
-                "9": {
-                    "title": "$Danger",
-                    "enable": 1,
-                    "type": 2.5,
-                    "mouse": "$MultiplierMouse",
-                    "vars": [{ "form": "Goo1", "auxVar": "*_SneakVig", "key": 3, "configINI": "General:fDangerAlpha", "default": 0.80 }],
-                    "scale": { "valueDecimal": 2, "valueIncrement": 0.01, "valueMax": 1, "valueMin": 0 }
-                },
-                "2": {
-                    "title": "$VignetteColor",
-                    "enable": 1,
-                    "type": 0
+				"3": {
+					"title": "$Hidden",
+					"enable": 1,
+					"type": 2.5,
+					"mouse": "$MultiplierMouse",
+					"vars": [{ "form": "Goo1", "auxVar": "*_SneakVig", "key": 0, "configINI": "General:fHiddenAlpha", "default": 0.80 }],
+					"scale": { "valueDecimal": 2, "valueIncrement": 0.01, "valueMax": 1, "valueMin": 0 }
 				},
-                "4": {
-                    "title": "$ColorDefault",
-                    "type": 1,
-                    "enable": 1,
-                    "mouse": "$ColorMouse",
-                    "vars": [{ "uiTrait": "HUDMainMenu/SneakVignette/_systemcolor_0", "configINI": "Color:iDefaultSystemcolor", "default": 0 }],
-                    "strings": [ "$Custom", "$HUD", "$HUDAlt", "$Terminal", "$PipBoy", "$PauseMenu"]
-                },
-                "6": {
-                    "title": "$CustomColorDefault",
-                    "type": 9,
-                    "state": { "uiTrait": "HUDMainMenu/SneakVignette/_systemcolor_0", "value": 0, "disable": 1 },
-                    "mouse": "$CustomColorMouse",
-                    "vars": [
-                        { "uiTrait": "HUDMainMenu/SneakVignette/_red_0", "configINI": "Color:iDefaultRed", "default": 0 },
+				"5": {
+					"title": "$Caution",
+					"enable": 1,
+					"type": 2.5,
+					"mouse": "$MultiplierMouse",
+					"vars": [{ "form": "Goo1", "auxVar": "*_SneakVig", "key": 1, "configINI": "General:fCautionAlpha", "default": 0.80 }],
+					"scale": { "valueDecimal": 2, "valueIncrement": 0.01, "valueMax": 1, "valueMin": 0 }
+				},
+				"7": {
+					"title": "$Detected",
+					"enable": 1,
+					"type": 2.5,
+					"mouse": "$MultiplierMouse",
+					"vars": [{ "form": "Goo1", "auxVar": "*_SneakVig", "key": 2, "configINI": "General:fDetectedAlpha", "default": 0.80 }],
+					"scale": { "valueDecimal": 2, "valueIncrement": 0.01, "valueMax": 1, "valueMin": 0 }
+				},
+				"9": {
+					"title": "$Danger",
+					"enable": 1,
+					"type": 2.5,
+					"mouse": "$MultiplierMouse",
+					"vars": [{ "form": "Goo1", "auxVar": "*_SneakVig", "key": 3, "configINI": "General:fDangerAlpha", "default": 0.80 }],
+					"scale": { "valueDecimal": 2, "valueIncrement": 0.01, "valueMax": 1, "valueMin": 0 }
+				},
+				"2": {
+					"title": "$VignetteColor",
+					"enable": 1,
+					"type": 0
+				},
+				"4": {
+					"title": "$ColorDefault",
+					"type": 1,
+					"enable": 1,
+					"mouse": "$ColorMouse",
+					"vars": [{ "uiTrait": "HUDMainMenu/SneakVignette/_systemcolor_0", "configINI": "Color:iDefaultSystemcolor", "default": 0 }],
+					"strings": [ "$Custom", "$HUD", "$HUDAlt", "$Terminal", "$PipBoy", "$PauseMenu"]
+				},
+				"6": {
+					"title": "$CustomColorDefault",
+					"type": 9,
+					"state": { "uiTrait": "HUDMainMenu/SneakVignette/_systemcolor_0", "value": 0, "disable": 1 },
+					"mouse": "$CustomColorMouse",
+					"vars": [
+						{ "uiTrait": "HUDMainMenu/SneakVignette/_red_0", "configINI": "Color:iDefaultRed", "default": 0 },
 						{ "uiTrait": "HUDMainMenu/SneakVignette/_green_0", "configINI": "Color:iDefaultGreen", "default": 0 },
 						{ "uiTrait": "HUDMainMenu/SneakVignette/_blue_0", "configINI": "Color:iDefaultBlue", "default": 0 }
 					]
-                },
-                "8": {
-                    "title": "$ColorCombat",
-                    "type": 1,
-                    "enable": 1,
-                    "mouse": "$ColorMouse",
-                    "vars": [{ "uiTrait": "HUDMainMenu/SneakVignette/_systemcolor_1", "configINI": "Color:iCombatSystemcolor", "default": 0 }],
-                    "strings": [ "$Custom", "$HUD", "$HUDAlt", "$Terminal", "$PipBoy", "$PauseMenu"]
-                },
-                "10": {
-                    "title": "$CustomColorCombat",
-                    "type": 9,
-                    "state": { "uiTrait": "HUDMainMenu/SneakVignette/_systemcolor_1", "value": 0, "disable": 1 },
-                    "mouse": "$CustomColorMouse",
-                    "vars": [
-                        { "uiTrait": "HUDMainMenu/SneakVignette/_red_1", "configINI": "Color:iCombatRed", "default": 0 },
+				},
+				"8": {
+					"title": "$ColorCombat",
+					"type": 1,
+					"enable": 1,
+					"mouse": "$ColorMouse",
+					"vars": [{ "uiTrait": "HUDMainMenu/SneakVignette/_systemcolor_1", "configINI": "Color:iCombatSystemcolor", "default": 0 }],
+					"strings": [ "$Custom", "$HUD", "$HUDAlt", "$Terminal", "$PipBoy", "$PauseMenu"]
+				},
+				"10": {
+					"title": "$CustomColorCombat",
+					"type": 9,
+					"state": { "uiTrait": "HUDMainMenu/SneakVignette/_systemcolor_1", "value": 0, "disable": 1 },
+					"mouse": "$CustomColorMouse",
+					"vars": [
+						{ "uiTrait": "HUDMainMenu/SneakVignette/_red_1", "configINI": "Color:iCombatRed", "default": 0 },
 						{ "uiTrait": "HUDMainMenu/SneakVignette/_green_1", "configINI": "Color:iCombatGreen", "default": 0 },
 						{ "uiTrait": "HUDMainMenu/SneakVignette/_blue_1", "configINI": "Color:iCombatBlue", "default": 0 }
 					]
-                }
-            }
-        }
-    }
+				}
+			}
+		}
+	}
 }
