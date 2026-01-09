@@ -14,30 +14,30 @@
 	</height>
 	<zoom> &scale; </zoom>
 	<systemcolor>
-		<copy src="me()" trait="_combat_state"/>
-		<copy src="me()" trait="_systemcolor_"/>
+		<copy src="me()" trait="_combat_state" />
+		<copy src="me()" trait="_systemcolor_" />
 	</systemcolor>
 	<red>
-		<copy src="me()" trait="_combat_state"/>
-		<copy src="me()" trait="_red_"/>
+		<copy src="me()" trait="_combat_state" />
+		<copy src="me()" trait="_red_" />
 	</red>
 	<green>
-		<copy src="me()" trait="_combat_state"/>
-		<copy src="me()" trait="_green_"/>
+		<copy src="me()" trait="_combat_state" />
+		<copy src="me()" trait="_green_" />
 	</green>
 	<blue>
-		<copy src="me()" trait="_combat_state"/>
-		<copy src="me()" trait="_blue_"/>
+		<copy src="me()" trait="_combat_state" />
+		<copy src="me()" trait="_blue_" />
 	</blue>
 	<filename> Interface\Stentorious\_Common\Overlay\vignette.dds </filename>
 
 	<!-- Player detection state -->
 	<_detection_state> 1 </_detection_state>
 	<_combat_state>
-		<copy src="me()" trait="_detection_state"/>
+		<copy src="me()" trait="_detection_state" />
 		<eq> 1 </eq>
 		<or>
-			<copy src="me()" trait="_detection_state"/>
+			<copy src="me()" trait="_detection_state" />
 			<eq> 3 </eq>
 		</or>
 	</_combat_state>
