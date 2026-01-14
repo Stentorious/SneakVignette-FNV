@@ -1,7 +1,7 @@
 <image name="SneakVignette">
 	<visible> 1 </visible>
 	<alpha> 0 </alpha>
-	<depth> -2 </depth>
+	<depth> -150 </depth>
 	<x> -10 </x>
 	<y> -10 </y>
 	<width>
